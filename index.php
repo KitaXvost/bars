@@ -13,10 +13,18 @@ print'
   echo "<td>". $row['type_category'] . "</td>";
   echo "</tr>";}echo "</table>
 <p>
+<span onclick='refresh();'>
 <i class='fa fa-2x fa-refresh'></i>
+</span>
+<span onclick='create();'>
 <i class='fa fa-2x fa-plus'></i>
+</span>
+<span onclick='edit();'>
 <i class='fa fa-2x fa-edit'></i>
+</span>
+<span onclick='trash();'>
 <i class='fa fa-2x fa-trash'></i>
+</span>
 </p>  ";
 
 
