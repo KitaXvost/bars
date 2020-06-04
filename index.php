@@ -1,0 +1,54 @@
+<?php
+print'
+<!DOCTYPE HTML>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="../rest/jquery-1.3.2.min.js"></script>
+</head>';
+  $db = pg_connect("host=localhost port=5432 dbname=vue_spa user=andreipunt90 password=Ii2329925");
+  $result = pg_query($db,"SELECT * FROM spravka");
+  echo "<table>";
+  while($row=pg_fetch_assoc($result)){echo "<tr>";
+  echo "<td>". $row['family'] ." ". $row['name'] ." ". $row['middle_name'] ."</td>";
+  echo "<td>". $row['type_category'] . "</td>";
+  echo "</tr>";}echo "</table>
+<p>
+<i class='fa fa-2x fa-refresh'></i>
+<i class='fa fa-2x fa-plus'></i>
+<i class='fa fa-2x fa-edit'></i>
+<i class='fa fa-2x fa-trash'></i>
+</p>  ";
+
+
+print'
+<style type="text/css">
+    table {
+        font-family: verdana, arial, sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #3A3A3A;
+        border-collapse: collapse;
+    }
+
+    table th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #517994;
+        background-color: #B2CFD8;
+    }
+
+    table tr:hover td {
+        background-color: #DFEBF1;
+    }
+
+    table td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #517994;
+        background-color: #ffffff;
+    }
+</style>
+';
