@@ -9,6 +9,19 @@ print'
     <script type="text/javascript" src="script.js"></script>
 </head>';
 
+print'
+<form method="post" id="ajax_form" action="" >
+        <input type="text" name="name" placeholder="NAME" /><br>
+        <input type="text" name="phonenumber" placeholder="YOUR PHONE" /><br>
+        <input type="button" id="btn" value="Отправить" />
+    </form>
+
+    <br>
+
+    <div id="result_form"></div>
+
+
+';
 try {
     $sql = 'Select * FROM spravka';
     echo "<table>";
@@ -39,7 +52,28 @@ print "
 <i class='fa fa-2x fa-trash'></i>
 </span>
 </p>
-
-<div id='edit-task'></div>
-<div id='create-task'></div>
 ";
+print '
+<div id="edit-task"></div>
+
+<div id="create-task">
+<div align="left">Добавление</div>
+<div style="position:absolute; top:10px; right:10px;" onclick="close3();"><i class="fa fa-1x fa-close"></i></div>
+
+<form method="post" id="post_form" action="">
+<input name="name" type="text" size="30" required placeholder="Имя">
+<input name="middle_name" type="text" size="30" required placeholder="Отчество">
+<input name="family" type="text" size="30" required placeholder="Фамилия">
+
+<input name="number" type="number" size="10" required placeholder="номер">
+<input name="power"type="text" size="30" required placeholder="Сила">
+<input name="category" type="text" size="30" required placeholder="Категория">
+<input name="type" type="text" size="10" required placeholder="Тип">
+
+
+<p><input type="button" value="Отмена">
+   <input type="submit" id="post" value="Отправить">
+</p>
+</form>
+</div>
+';

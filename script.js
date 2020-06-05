@@ -4,9 +4,9 @@ function create(){
 			url: "create.php", // путь к php-обработчику
 			type: "POST", // метод передачи данных
 			//data: {token:token}, // данные, которые передаем на сервер
-			success: function(data){
-							$("#create-task").html(data);
-			}
+			//success: function(data){
+			//				$("#create-task").html(data);
+			//}
 		});
 }
 function edit(){
@@ -19,6 +19,30 @@ function edit(){
               $("#edit-task").html(data);
       }
     });
+}
+$( document ).ready(function() {
+    $("#post").click(
+		function(){
+			sendAjaxForm('result_form', 'post_form', 'create.php');
+			return false;
+		}
+	);
+});
+
+function sendAjaxForm(result_form, post_form, url) {
+    $.ajax({
+        url:     url,
+        type:     "POST",
+        dataType: "html",
+        data: $("#"+post_form).serialize(),
+        success: function(response) {
+        	result = $.parseJSON(response);
+        	$('#result_form').html();
+    	},
+    	error: function(response) { // Данные не отправлены
+            $('#result_form').html('Ошибка. Данные не отправлены.');
+    	}
+ 	});
 }
 function close2(){
 document.getElementById("edit-task").style.visibility = "hidden";
