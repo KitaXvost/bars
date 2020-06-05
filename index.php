@@ -30,4 +30,5 @@ print'
 </p>
 
 <div id='edit-task'></div>
+<div id='create-task'></div>
 ";
