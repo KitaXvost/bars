@@ -9,19 +9,6 @@ print'
     <script type="text/javascript" src="script.js"></script>
 </head>';
 
-print'
-<form method="post" id="ajax_form" action="" >
-        <input type="text" name="name" placeholder="NAME" /><br>
-        <input type="text" name="phonenumber" placeholder="YOUR PHONE" /><br>
-        <input type="button" id="btn" value="Отправить" />
-    </form>
-
-    <br>
-
-    <div id="result_form"></div>
-
-
-';
 try {
     $sql = 'Select * FROM spravka';
     echo "<table>";
@@ -54,7 +41,26 @@ print "
 </p>
 ";
 print '
-<div id="edit-task"></div>
+<div id="edit-task">
+<div align="left">Исправление</div>
+<div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
+
+<form method="post" id="edit_form" action="">
+<input name="edit-name" type="text" size="30" required placeholder="Имя">
+<input name="edit-middle_name" type="text" size="30" required placeholder="Отчество">
+<input name="edit-family" type="text" size="30" required placeholder="Фамилия">
+
+<input name="edit-number" type="number" size="10" required placeholder="номер">
+<input name="edit-power"type="text" size="30" required placeholder="Сила">
+<input name="edit-category" type="text" size="30" required placeholder="Категория">
+<input name="edit-type" type="text" size="10" required placeholder="Тип">
+
+
+<p><input type="button" value="Отмена">
+   <input type="submit" id="edit_post" value="Отправить">
+</p>
+</form>
+</div>
 
 <div id="create-task">
 <div align="left">Добавление</div>
