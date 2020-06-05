@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 print'
 <!DOCTYPE HTML>
 <head>
@@ -7,13 +8,23 @@ print'
 		<script type="text/javascript" src="../rest/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </head>';
-  $db = pg_connect("host=localhost port=5432 dbname=vue_spa user=andreipunt90 password=Ii2329925");
-  $result = pg_query($db,"SELECT * FROM spravka");
-  echo "<table>";
-  while($row=pg_fetch_assoc($result)){echo "<tr>";
-  echo "<td>". $row['family'] ." ". $row['name'] ." ". $row['middle_name'] ."</td>";
-  echo "<td>". $row['type_category'] . "</td>";
-  echo "</tr>";}echo "</table>
+
+try {
+    $sql = 'Select * FROM spravka';
+    echo "<table>";
+    foreach ($dbconn->query($sql) as $row) {
+      echo "<tr>
+            <td>". $row['family'] ." ". $row['name'] ." ". $row['middle_name'] ."</td>
+            <td>". $row['type_category'] . "</td>
+            </tr>";
+
+    }
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br />";
+}
+echo "</table>";
+
+print "
 <p style='color:grey;'>
 <span onclick='refresh();'>
 <i class='fa fa-2x fa-refresh'></i>
