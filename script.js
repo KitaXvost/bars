@@ -31,11 +31,23 @@ function sendAjaxForm(result_form, form, url) {
     	}
  	});
 }
+function radio(id){
+$.ajax({
+      url: "select.php",
+      type:     "POST",
+      data: {id: id},
+      success: function(data){
+              $("#edit_task").html(data);
+      }
+    });
+}
+
+
 function edit(){
-  document.getElementById("edit-task").style.visibility = "visible";
+  document.getElementById("edit_task").style.visibility = "visible";
 }
 function close2(){
-document.getElementById("edit-task").style.visibility = "hidden";
+document.getElementById("edit_task").style.visibility = "hidden";
 }
 function create(){
 	document.getElementById("create-task").style.visibility = "visible";

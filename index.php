@@ -13,16 +13,28 @@ try {
     $sql = 'Select * FROM spravka';
     echo "<table>";
     foreach ($dbconn->query($sql) as $row) {
+      $name = $row['name'];
+      $family = $row['family'];
+      $middle_name = $row['middle_name'];
+      $n_reg_doc = $row['n_reg_doc'];
+      $power = $row['power'];
+      $category = $row['category'];
+      $type_category = $row['type_category'];
+      $id = $row['id'];
+
       echo "<tr>
-            <td>". $row['family'] ." ". $row['name'] ." ". $row['middle_name'] ."</td>
-            <td>". $row['type_category'] . "</td>
+            <td>". $family ." ". $name ." ". $middle_name ."</td>
+            <td>". $type_category . "</td>
+            <td><input name='id' type='radio' onclick='radio(id=".$id.");'></td>
             </tr>";
 
     }
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br />";
 }
-echo "</table>";
+echo "</table>
+<div id='result_form'></div>
+";
 
 print "
 <p style='color:grey;'>
@@ -41,26 +53,7 @@ print "
 </p>
 ";
 print '
-<div id="edit-task">
-<div align="left">Исправление</div>
-<div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
-
-<form method="post" id="edit_form" action="">
-<input name="edit-name" type="text" size="30" required placeholder="Имя">
-<input name="edit-middle_name" type="text" size="30" required placeholder="Отчество">
-<input name="edit-family" type="text" size="30" required placeholder="Фамилия">
-
-<input name="edit-number" type="number" size="10" required placeholder="номер">
-<input name="edit-power"type="text" size="30" required placeholder="Сила">
-<input name="edit-category" type="text" size="30" required placeholder="Категория">
-<input name="edit-type" type="text" size="10" required placeholder="Тип">
-
-
-<p><input type="button" value="Отмена">
-   <input type="submit" id="edit_post" value="Отправить">
-</p>
-</form>
-</div>
+<div id="edit_task"></div>
 
 <div id="create-task">
 <div align="left">Добавление</div>
@@ -72,10 +65,10 @@ print '
 <input name="family" type="text" size="30" required placeholder="Фамилия">
 
 <input name="number" type="number" size="10" required placeholder="номер">
-<input name="power"type="text" size="30" required placeholder="Сила">
+<p><textarea name="power" rows="4" cols="35" required placeholder="Сила"></textarea>
 <input name="category" type="text" size="30" required placeholder="Категория">
 <input name="type" type="text" size="10" required placeholder="Тип">
-
+</p>
 
 <p><input type="button" value="Отмена">
    <input type="submit" id="post" value="Отправить">
