@@ -31,8 +31,18 @@ function sendAjaxForm(result_form, form, url) {
     	}
  	});
 }
+function trash_form(){
+  var id = document.getElementById('row-id').innerHTML;
 
+  $.ajax({
+        url: "delete.php",
+        type:     "POST",
+        data: {id: id},
+        });
+}
 function radio(id){
+document.getElementById("edit-button").style.visibility = "visible";
+document.getElementById("trash-button").style.visibility = "visible";
   $.ajax({
       url: "select.php",
       type:     "POST",
@@ -46,6 +56,9 @@ var obj = $.parseJSON(data);
     document.getElementById('edit-power').innerHTML = obj.power;
      document.getElementById('edit-category').value = obj.category;
       document.getElementById('edit-type').value = obj.type_category;
+
+document.getElementById('delete-row').innerHTML = obj.name+' '+obj.middle_name+' '+obj.family_name+'</br>'+obj.category;
+document.getElementById('row-id').innerHTML = id;
       }
     });
 }
@@ -60,4 +73,10 @@ function create(){
 }
 function close3(){
 document.getElementById("create-task").style.visibility = "hidden";
+}
+function trash(){
+	document.getElementById("delete_task").style.visibility = "visible";
+}
+function close4(){
+document.getElementById("delete_task").style.visibility = "hidden";
 }

@@ -10,8 +10,8 @@ foreach ($data as $k => $v){
     $middle_name = $v['middle_name'];
     $family_name = $v['family'];
     $n_reg_doc = $v['n_reg_doc'];
-    $power = $v['category'];
-    $category = $v['power'];
+    $power = $v['power'];
+    $category = $v['category'];
     $type_category = $v['type_category'];
 
     $arr = array('name' => $name,

@@ -51,35 +51,13 @@ try {
 <span onclick='create();'>
 <i class='fa fa-2x fa-plus'></i>
 </span>
-<span onclick='edit();'>
+<span id="edit-button" onclick='edit();'>
 <i class='fa fa-2x fa-edit'></i>
 </span>
-<span onclick='trash();'>
+<span id="trash-button" onclick='trash();'>
 <i class='fa fa-2x fa-trash'></i>
 </span>
 </p>
-
-
-<div id="edit_task">
-<div align="left">Исправление</div>
-<div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
-
-<form method="post" id="edit_form" action="">
-<input id="edit_name" name="edit-name" type="text" size="30" required placeholder="Имя">
-<input id="edit-middle_name" name="edit-middle_name" type="text" size="30" required placeholder="Отчество">
-<input id="edit-family" name="edit-family" type="text" size="30" required placeholder="Фамилия">
-
-<input id="edit-number" name="edit-number" type="number" size="10" required placeholder="номер">
-<p><textarea id="edit-power" name="edit-power" rows="4" cols="35" required placeholder="Сила"></textarea>
-<input id="edit-category" name="edit-category" type="text" size="30" required placeholder="Категория">
-<input id="edit-type" name="edit-type" type="text" size="10" required placeholder="Тип">
-</p>
-
-<p><input type="button" value="Отмена">
-   <input type="submit" id="edit_post" value="Отправить">
-</p>
-</form>
-</div>
 
 <div id="create-task">
 <div align="left">Добавление</div>
@@ -96,10 +74,41 @@ try {
 <input name="type" type="text" size="10" required placeholder="Тип">
 </p>
 
-<p><input type="button" value="Отмена">
+<p><input type="button" value="Отмена" onclick="close3();">
    <input type="submit" id="post" value="Отправить">
 </p>
 </form>
+</div>
+
+<div id="edit_task">
+<div align="left">Исправление</div>
+<div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
+
+<form method="post" id="edit_form" action="">
+<input id="edit_name" name="edit-name" type="text" size="30" required placeholder="Имя">
+<input id="edit-middle_name" name="edit-middle_name" type="text" size="30" required placeholder="Отчество">
+<input id="edit-family" name="edit-family" type="text" size="30" required placeholder="Фамилия">
+
+<input id="edit-number" name="edit-number" type="number" size="10" required placeholder="номер">
+<p><textarea id="edit-power" name="edit-power" rows="4" cols="35" required placeholder="Сила"></textarea>
+<input id="edit-category" name="edit-category" type="text" size="30" required placeholder="Категория">
+<input id="edit-type" name="edit-type" type="text" size="10" required placeholder="Тип">
+</p>
+
+<p><input type="button" value="Отмена" onclick="close2();">
+   <input type="submit" id="edit_post" value="Отправить">
+</p>
+</form>
+</div>
+
+<div id="delete_task">
+  <div align="left">Подтвердите удаление записи</div>
+  <div style="position:absolute; top:10px; right:10px;" onclick="close4();"><i class="fa fa-1x fa-close"></i></div>
+<div id="delete-row"></div>
+<div id="row-id" style="font-size:0;"></div>
+<p><input type="button" value="Отмена" onclick="close4();">
+   <input type="button" value="Удалить" onclick="trash_form();">
+</p>
 </div>
 
 </html>
