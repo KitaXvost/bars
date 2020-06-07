@@ -29,7 +29,9 @@ function sendAjaxForm(result_form, form, url) {
     	error: function(response) {
             $('#result_form').html('Ошибка. Данные не отправлены.');
     	}
+
  	});
+  close2();
 }
 function trash_form(){
   var id = document.getElementById('row-id').innerHTML;
@@ -39,6 +41,7 @@ function trash_form(){
         type:     "POST",
         data: {id: id},
         });
+  close4();
 }
 function radio(id){
 document.getElementById("edit-button").style.visibility = "visible";
@@ -67,6 +70,7 @@ function edit(){
 }
 function close2(){
 document.getElementById("edit_task").style.visibility = "hidden";
+  close3();
 }
 function create(){
 	document.getElementById("create-task").style.visibility = "visible";
