@@ -31,18 +31,24 @@ function sendAjaxForm(result_form, form, url) {
     	}
  	});
 }
+
 function radio(id){
-$.ajax({
+  $.ajax({
       url: "select.php",
       type:     "POST",
       data: {id: id},
       success: function(data){
-              $("#edit_task").html(data);
+var obj = $.parseJSON(data);
+document.getElementById('edit_name').value = obj.name;
+ document.getElementById('edit-middle_name').value = obj.middle_name;
+  document.getElementById('edit-family').value = obj.family_name;
+   document.getElementById('edit-number').value = obj.n_reg_doc;
+    document.getElementById('edit-power').innerHTML = obj.power;
+     document.getElementById('edit-category').value = obj.category;
+      document.getElementById('edit-type').value = obj.type_category;
       }
     });
 }
-
-
 function edit(){
   document.getElementById("edit_task").style.visibility = "visible";
 }

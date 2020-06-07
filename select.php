@@ -6,27 +6,23 @@ $id = $_POST['id'];
 $data = $dbconn->query("SELECT * FROM spravka")->fetchAll(PDO::FETCH_ASSOC);
 foreach ($data as $k => $v){
   if ($v['id'] == $id){
+    $name = $v['name'];
+    $middle_name = $v['middle_name'];
+    $family_name = $v['family'];
+    $n_reg_doc = $v['n_reg_doc'];
+    $power = $v['category'];
+    $category = $v['power'];
+    $type_category = $v['type_category'];
 
-print '
+    $arr = array('name' => $name,
+          'middle_name' => $middle_name,
+          'family_name' => $family_name,
+            'n_reg_doc' => $n_reg_doc,
+                'power' => $power,
+             'category' => $category,
+        'type_category' => $type_category
+              );
+    echo json_encode($arr);
 
-<div align="left">Исправление</div>
-<div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
-
-<form method="post" id="edit_form" action="">
-<input name="edit-name" type="text" value='.$v["name"].' size="30" required placeholder="Имя">
-<input name="edit-middle_name" type="text" value='.$v["middle_name"].' size="30" required placeholder="Отчество">
-<input name="edit-family" type="text" value='.$v["family"].' size="30" required placeholder="Фамилия">
-
-<input name="edit-number" type="number" value='.$v["n_reg_doc"].' size="10" required placeholder="номер">
-<p><textarea name="edit-power" rows="4" cols="35" required placeholder="Сила">'.$v["power"].'</textarea>
-<input name="edit-category" type="text" value='.$v["category"].' size="30" required placeholder="Категория">
-<input name="edit-type" type="text" value='.$v["type_category"].' size="10" required placeholder="Тип">
-</p>
-
-<p><input type="button" value="Отмена">
-   <input type="submit" id="edit_post" value="Отправить">
-</p>
-</form>
-';
 }
 }
