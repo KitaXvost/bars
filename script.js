@@ -73,6 +73,8 @@ function refresh(data_table){
           $('#data_table').html(data);
         }
         });
+        document.getElementById("edit-button").style.visibility = "hidden";
+        document.getElementById("trash-button").style.visibility = "hidden";
 }
 function edit(){
   document.getElementById("edit_task").style.visibility = "visible";
