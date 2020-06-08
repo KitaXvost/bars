@@ -8,7 +8,7 @@ include 'config.php';
     $power = $_POST['edit-power'];
     $category = $_POST['edit-category'];
     $type_category = $_POST['edit-type'];
-    $id = 1;
+    $id = $_POST['edit-id'];;
 
 $query = "UPDATE spravka SET name = :name, family = :family, middle_name = :middle_name, n_reg_doc = :n_reg_doc, power = :power, category = :category, type_category = :type_category
              WHERE id = :id";
