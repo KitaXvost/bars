@@ -13,7 +13,7 @@ $( document ).ready(function() {
 		return false;
 	}
 	);
-
+refresh();
 });
 
 function sendAjaxForm(result_form, form, url) {
@@ -62,8 +62,17 @@ var obj = $.parseJSON(data);
 
 document.getElementById('delete-row').innerHTML = obj.name+' '+obj.middle_name+' '+obj.family_name+'</br>'+obj.category;
 document.getElementById('row-id').innerHTML = id;
+document.getElementById('edit-id').value = id;
       }
     });
+}
+function refresh(data_table){
+  $.ajax({
+        url: "refresh.php",
+        success: function(data){
+          $('#data_table').html(data);
+        }
+        });
 }
 function edit(){
   document.getElementById("edit_task").style.visibility = "visible";
@@ -77,10 +86,12 @@ function create(){
 }
 function close3(){
 document.getElementById("create-task").style.visibility = "hidden";
+refresh();
 }
 function trash(){
 	document.getElementById("delete_task").style.visibility = "visible";
 }
 function close4(){
 document.getElementById("delete_task").style.visibility = "hidden";
+refresh();
 }
