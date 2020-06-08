@@ -6,39 +6,8 @@
     <script type="text/javascript" src="script.js"></script>
 </head>
 
-<?php
-
-include 'config.php';
-
-try {
-    $sql = 'Select * FROM spravka';
-    echo "<table>";
-    foreach ($dbconn->query($sql) as $row) {
-      $name = $row['name'];
-      $family = $row['family'];
-      $middle_name = $row['middle_name'];
-      $n_reg_doc = $row['n_reg_doc'];
-      $power = $row['power'];
-      $category = $row['category'];
-      $type_category = $row['type_category'];
-      $id = $row['id'];
-
-      echo "<tr>
-            <td>". $family ." ". $name ." ". $middle_name ."</td>
-            <td>". $type_category . "</td>
-            <td><input name='id' type='radio' onclick='radio(id=".$id.");'></td>
-            </tr>";
-
-    }
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br />";
-}
-?>
-
-
-<html>
-
-</table>
+<div id='data_table'><table>
+</table></div>
 <div id='result_form'></div>
 
 <div id='a'></div>
@@ -85,6 +54,7 @@ try {
 <div style="position:absolute; top:10px; right:10px;" onclick="close2();"><i class="fa fa-1x fa-close"></i></div>
 
 <form method="post" id="edit_form" action="">
+<input id="edit-id" name="edit-id" style="width:0; font-size:0;">
 <input id="edit_name" name="edit-name" type="text" size="30" required placeholder="Имя">
 <input id="edit-middle_name" name="edit-middle_name" type="text" size="30" required placeholder="Отчество">
 <input id="edit-family" name="edit-family" type="text" size="30" required placeholder="Фамилия">
@@ -110,5 +80,3 @@ try {
    <input type="button" value="Удалить" onclick="trash_form();">
 </p>
 </div>
-
-</html>
