@@ -32,6 +32,17 @@ padding: 20px;
 #trash-button, #edit-button{
   visibility:hidden;
 }
+#edit-id, #row-id{
+width:0; font-size:0;
+}
+#refresh-button, #create-button, #edit-button, #trash-button {
+  color:grey;
+  cursor: pointer;
+}
+input:disabled {
+    background: silver;
+    border: 1px solid white;
+   }
     table {
         font-family: verdana, arial, sans-serif;
         font-size: 11px;

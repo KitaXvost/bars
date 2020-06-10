@@ -17,7 +17,7 @@ try {
       echo "<tr>
             <td>". $family ." ". $name ." ". $middle_name ."</td>
             <td>". $type_category . "</td>
-            <td><input name='id' type='radio' onclick='radio(id=".$id.");'></td>
+            <td><input name='id' class='wrap' type='radio' onclick='radio(id=".$id.");'></td>
             </tr>";
 
     }

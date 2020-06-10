@@ -33,6 +33,17 @@ function sendAjaxForm(result_form, form, url) {
  	});
   close2();
 }
+function select_type(type_category){
+       if (type_category == 'P') {
+        document.getElementById('create-category').value = 'пирокинет';
+          }
+       if (type_category == 'T') {
+        document.getElementById('create-category').value = 'телепат';
+          }
+       if (type_category == 'B') {
+        document.getElementById('create-category').value = 'биоморф';
+          }
+}
 function trash_form(){
   var id = document.getElementById('row-id').innerHTML;
 
@@ -75,9 +86,14 @@ function refresh(data_table){
         });
         document.getElementById("edit-button").style.visibility = "hidden";
         document.getElementById("trash-button").style.visibility = "hidden";
+        document.getElementById("create-button").style.visibility = "visible";
 }
 function edit(){
   document.getElementById("edit_task").style.visibility = "visible";
+  document.getElementById("create-button").style.visibility = "hidden";
+  document.getElementById("edit-button").style.visibility = "hidden";
+  document.getElementById("trash-button").style.visibility = "hidden";
+   $(".wrap").attr("disabled", true);
 }
 function close2(){
 document.getElementById("edit_task").style.visibility = "hidden";
@@ -85,6 +101,10 @@ document.getElementById("edit_task").style.visibility = "hidden";
 }
 function create(){
 	document.getElementById("create-task").style.visibility = "visible";
+  document.getElementById("create-button").style.visibility = "hidden";
+  document.getElementById("edit-button").style.visibility = "hidden";
+  document.getElementById("trash-button").style.visibility = "hidden";
+   $(".wrap").attr("disabled", true);
 }
 function close3(){
 document.getElementById("create-task").style.visibility = "hidden";
@@ -92,6 +112,10 @@ refresh();
 }
 function trash(){
 	document.getElementById("delete_task").style.visibility = "visible";
+  document.getElementById("create-button").style.visibility = "hidden";
+  document.getElementById("edit-button").style.visibility = "hidden";
+  document.getElementById("trash-button").style.visibility = "hidden";
+   $(".wrap").attr("disabled", true);
 }
 function close4(){
 document.getElementById("delete_task").style.visibility = "hidden";
