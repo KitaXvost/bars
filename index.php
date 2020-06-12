@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
 	<script type="text/javascript" src="../rest/jquery-3.5.1.js"></script>
@@ -9,12 +10,7 @@
 	<table> </table>
 </div>
 <div id='result_form'></div>
-  <p>
-    <span id="refresh-button" onclick='refresh();'>Обновить</span>
-     <span id="create-button" onclick='create(caption="Добавление");'>Добавить</span>
-     <span id="edit-button" onclick='edit(caption="Редактирование");'>Редактировать</span>
-    <span id="trash-button" onclick='trash();'>Удалить</span>
-  </p>
+<p> <span id="refresh-button" onclick='refresh();'>Обновить</span> <span id="create-button" onclick='create(caption="Добавление");'>Добавить</span> <span id="edit-button" onclick='edit(caption="Редактирование");'>Редактировать</span> <span id="trash-button" onclick='trash();'>Удалить</span> </p>
 <div id="form_task">
 	<div id="form_caption"></div>
 	<form method="POST" id="post_form" action="javascript:void(null);" onsubmit="post_form()">
@@ -29,8 +25,7 @@
 				<input name="form_type" type="radio" value="T" onclick='select_type(type_category="T");'>т</br>
 				<input name="form_type" type="radio" value="B" onclick='select_type(type_category="B");'>в </div>
 			<div id="rad-label">
-				<input id="form_category" name="form_category" type="text" size="20" placeholder="категория не выбрана">
-				</br>
+				<input id="form_category" name="form_category" type="text" size="20" placeholder="категория не выбрана"> </br>
 				<textarea id="form_power" name="form_power" rows="2" cols="70" placeholder="описание силы"></textarea>
 			</div>
 		</p>
@@ -46,4 +41,5 @@
 		<input type="button" value="Удалить" onclick="trash_form();"> </p>
 </div>
 <footer> Исходный код <a href="https://github.com/KitaXvost/bars">GitHub</a> </footer>
+
 </html>

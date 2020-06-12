@@ -1,16 +1,16 @@
 $(document).ready(function() {
-		refresh();
-		return;
+	refresh();
+	return;
 });
 //отправка данных из формы
 function post_form() {
 	$("#form_category").prop('disabled', false);
 	$("#form_power").prop('disabled', false);
 	if(($("#form_caption").html()) == 'Добавление') {
-      var url = 'create.php';
+		var url = 'create.php';
 	}
 	if(($("#form_caption").html()) == 'Редактирование') {
-      var url = 'edit.php';
+		var url = 'edit.php';
 	}
 	$.ajax({
 		url: url,
@@ -25,59 +25,59 @@ function post_form() {
 	$("#result_form").text('Данные отправлены').delay(2500).fadeOut(300);
 	close2();
 }
-
 //выбор типа категории внутри формы
 function select_type(type_category) {
 	if(type_category == 'P') {
-    $("#form_category").val('пирокинет');
-    $("#form_power").html('способность вызывать огонь или значительное повышение температуры на расстоянии силой мысли');
+		$("#form_category").val('пирокинет');
+		$("#form_power").html('способность вызывать огонь или значительное повышение температуры на расстоянии силой мысли');
 	}
 	if(type_category == 'T') {
-    $("#form_category").val('телепат');
-    $("#form_power").html('способен передавать и читать чужие мысли на расстоянии');
+		$("#form_category").val('телепат');
+		$("#form_power").html('способен передавать и читать чужие мысли на расстоянии');
 	}
 	if(type_category == 'B') {
-    $("#form_category").val('биоморф');
-    $("#form_power").html('способность образного конструирования с помощью биологических форм');
+		$("#form_category").val('биоморф');
+		$("#form_power").html('способность образного конструирования с помощью биологических форм');
 	}
 }
-
 //удаление записи таблицы
 function trash_form() {
 	var id = document.getElementById('row-id').innerHTML;
 	$.ajax({
 		url: "delete.php",
 		type: "POST",
-		data: {id: id},
+		data: {
+			id: id
+		},
 	});
 	$("#result_form").fadeIn(300);
 	$("#result_form").text('Запись удалена').delay(2500).fadeOut(300);
 	close4();
 }
-
 //подготовка формы до её открытия
 //при выборе строк таблицы
 function radio(id) {
-  $("#edit-button").fadeIn(100);
-  $("#trash-button").fadeIn(100);
+	$("#edit-button").fadeIn(100);
+	$("#trash-button").fadeIn(100);
 	$.ajax({
 		url: "select.php",
 		type: "POST",
-		data: {id: id},
+		data: {
+			id: id
+		},
 		success: function(data) {
 			var obj = $.parseJSON(data);
-      $("#form_name").val(obj.name);
-      $("#form_middle_name").val(obj.middle_name);
-      $("#form_family").val(obj.family_name);
-      $("#form_number").val(obj.n_reg_doc);
+			$("#form_name").val(obj.name);
+			$("#form_middle_name").val(obj.middle_name);
+			$("#form_family").val(obj.family_name);
+			$("#form_number").val(obj.n_reg_doc);
 			$('input[name="form_type"][value=' + obj.type_category + ']').trigger('click');
 			$('#delete-row').html(obj.name + ' ' + obj.middle_name + ' ' + obj.family_name + '</br>' + obj.category);
-      $("#row-id").html(id);
-      $("#form_id").val(id);
-  	}
+			$("#row-id").html(id);
+			$("#form_id").val(id);
+		}
 	});
 }
-
 //обновление таблицы
 //возврат кнопок управления
 //к начальному виду
@@ -88,29 +88,25 @@ function refresh(data_table) {
 			$('#data_table').html(data);
 		}
 	});
-  $("#edit-button").fadeOut(100);
-  $("#trash-button").fadeOut(100);
-  $("#create-button").fadeIn(100);
+	$("#edit-button").fadeOut(100);
+	$("#trash-button").fadeOut(100);
+	$("#create-button").fadeIn(100);
 }
-
 //подставляем заголовок формы
 //меняем надпись на кнопке
 //открываем форму редактирования
 //скрываем кнопки управления таблицей
 function edit(caption) {
-  $("#form_caption").text(caption);
-  $("#post").val('Исправить');
-  $("#form_task").fadeIn(500);
-  hide_btns();
+	$("#form_caption").text(caption);
+	$("#post").val('Исправить');
+	$("#form_task").fadeIn(500);
+	hide_btns();
 }
-
 //закрытие формы с анимацией
 function close2() {
 	$("#form_task").fadeOut(500);
 	refresh();
 }
-
-
 //очищение формы
 //подставляем заголовок формы
 //меняем надпись на кнопке
@@ -119,13 +115,13 @@ function close2() {
 function create(caption) {
 	$("#form_category").prop('disabled', true);
 	$("#form_power").prop('disabled', true);
-	$('#post_form').trigger('reset'); $('#form_power').html('');
+	$('#post_form').trigger('reset');
+	$('#form_power').html('');
 	$("#form_caption").text(caption);
-  $("#post").val('Добавить');
-  $("#form_task").fadeIn(500);
-  hide_btns();
+	$("#post").val('Добавить');
+	$("#form_task").fadeIn(500);
+	hide_btns();
 }
-
 //открытие формы удаления
 function trash() {
 	$("#delete_task").fadeIn(500);
@@ -133,13 +129,13 @@ function trash() {
 }
 //закрытие формы удаление с анимацией
 function close4() {
-  $("#delete_task").fadeOut(500);
+	$("#delete_task").fadeOut(500);
 	refresh();
 }
 //скрытие кнопок управления таблицей
 function hide_btns() {
-  $("#create-button").fadeOut(100);
-  $("#edit-button").fadeOut(100);
-  $("#trash-button").fadeOut(100);
+	$("#create-button").fadeOut(100);
+	$("#edit-button").fadeOut(100);
+	$("#trash-button").fadeOut(100);
 	$(".wrap").attr("disabled", true);
 }
