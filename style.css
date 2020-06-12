@@ -1,7 +1,7 @@
-#edit_task, #create-task{
+#form_task{
 color:white;
 font-size:150%;
-visibility:hidden;
+display: none;
 position: fixed;
 top: 30%;
 left: 10%;
@@ -15,7 +15,7 @@ padding: 20px;
 #delete_task{
 color:white;
 font-size:150%;
-visibility:hidden;
+display: none;
 position: fixed;
 top: 30%;
 left: 10%;
@@ -30,19 +30,42 @@ padding: 20px;
   font-size:90%;
 }
 #trash-button, #edit-button{
-  visibility:hidden;
+  display: none;
 }
-#edit-id, #row-id{
+#form_id, #row-id{
 width:0; font-size:0;
 }
 #refresh-button, #create-button, #edit-button, #trash-button {
   color:grey;
   cursor: pointer;
 }
-input:disabled {
-    background: silver;
-    border: 1px solid white;
-   }
+input:disabled, textarea:disabled{
+   color: yellow;
+   background: rgba(20,1,77,0.1);
+   border: 0;
+ }
+ #rad-btn{
+   display:inline-block;
+ }
+ #rad-label{
+   display:inline-block;
+   position: absolute;
+ }
+ #form_category, #form_power{
+   margin-left: 100px;
+}
+#result_form{
+  display: none;
+  text-align: center;
+  padding: 20px 0 0 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  width: 50%;
+  height: 40px;
+  margin-left: 25%;
+  position: fixed;
+  bottom: 15%;
+}
     table {
         font-family: verdana, arial, sans-serif;
         font-size: 11px;
@@ -70,4 +93,9 @@ input:disabled {
         border-style: solid;
         border-color: #517994;
         background-color: #ffffff;
+    }
+footer {
+    position : fixed;
+    height : 50px;
+    bottom : 0;
     }
