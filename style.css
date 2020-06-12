@@ -1,62 +1,113 @@
-#edit_task, #create-task{
-color:white;
-font-size:150%;
-visibility:hidden;
-position: fixed;
-top: 30%;
-left: 10%;
-width:80%;
-height:40%;
-z-index: 99;
-background-color: rgba(20,1,77,0.7);
-padding: 20px;
+#form_task {
+	color: white;
+	font-size: 150%;
+	display: none;
+	position: fixed;
+	top: 30%;
+	left: 10%;
+	width: 80%;
+	height: 40%;
+	z-index: 99;
+	background-color: rgba(20,1,77,0.7);
+	padding: 20px;
 }
 
-#delete_task{
-color:white;
-font-size:150%;
-visibility:hidden;
-position: fixed;
-top: 30%;
-left: 10%;
-width:55%;
-height:30%;
-z-index: 99;
-background-color: rgba(20,1,77,0.7);
-padding: 20px;
+#delete_task {
+	color: white;
+	font-size: 150%;
+	display: none;
+	position: fixed;
+	top: 30%;
+	left: 10%;
+	width: 55%;
+	height: 30%;
+	z-index: 99;
+	background-color: rgba(20,1,77,0.7);
+	padding: 20px;
 }
-#delete-row{
-  color:yellow;
-  font-size:90%;
+
+#delete-row {
+	color: yellow;
+	font-size: 90%;
 }
-#trash-button, #edit-button{
-  visibility:hidden;
+
+#trash-button, #edit-button {
+	display: none;
 }
-    table {
-        font-family: verdana, arial, sans-serif;
-        font-size: 11px;
-        color: #333333;
-        border-width: 1px;
-        border-color: #3A3A3A;
-        border-collapse: collapse;
-    }
 
-    table th {
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #517994;
-        background-color: #B2CFD8;
-    }
+#form_id, #row-id {
+	width: 0;
+	font-size: 0;
+}
 
-    table tr:hover td {
-        background-color: #DFEBF1;
-    }
+#refresh-button, #create-button, #edit-button, #trash-button {
+	color: grey;
+	cursor: pointer;
+}
 
-    table td {
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #517994;
-        background-color: #ffffff;
-    }
+input:disabled, textarea:disabled {
+	color: yellow;
+	background: rgba(20,1,77,0.1);
+	border: 0;
+}
+
+#rad-btn {
+	display: inline-block;
+}
+
+#rad-label {
+	display: inline-block;
+	position: absolute;
+}
+
+#form_category, #form_power {
+	margin-left: 100px;
+}
+
+#result_form {
+	display: none;
+	text-align: center;
+	padding: 20px 0 0 0;
+	background: rgba(0,0,0,0.7);
+	color: white;
+	width: 50%;
+	height: 40px;
+	margin-left: 25%;
+	position: fixed;
+	bottom: 15%;
+}
+
+table {
+	font-family: verdana, arial, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	border-width: 1px;
+	border-color: #3A3A3A;
+	border-collapse: collapse;
+}
+
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #517994;
+	background-color: #B2CFD8;
+}
+
+table tr:hover td {
+	background-color: #DFEBF1;
+}
+
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #517994;
+	background-color: #ffffff;
+}
+
+footer {
+	position: fixed;
+	height: 50px;
+	bottom: 0;
+}
