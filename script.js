@@ -10,7 +10,7 @@ function post_form() {
 		var url = 'create_client.php';
 	}
 	if(($("#form_caption").html()) == 'Редактирование') {
-		var url = 'edit.php';
+		var url = 'update_client.php';
 	}
 	$.ajax({
 		url: url,
