@@ -19,18 +19,6 @@ SET row_security = off;
 SET default_tablespace = '';
 
 --
--- Name: account; Type: TABLE; Schema: public; Owner: andreipunt90
---
-
-CREATE TABLE public.account (
-    user_name character varying(30),
-    full_name character varying(64)
-);
-
-
-ALTER TABLE public.account OWNER TO andreipunt90;
-
---
 -- Name: spravka; Type: TABLE; Schema: public; Owner: andreipunt90
 --
 
@@ -77,22 +65,16 @@ ALTER TABLE ONLY public.spravka ALTER COLUMN id SET DEFAULT nextval('public.spra
 
 
 --
--- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: andreipunt90
---
-
-COPY public.account (user_name, full_name) FROM stdin;
-Андрей	Пунтус
-\.
-
-
---
 -- Data for Name: spravka; Type: TABLE DATA; Schema: public; Owner: andreipunt90
 --
 
 COPY public.spravka (name, family, middle_name, n_reg_doc, power, category, type_category, id) FROM stdin;
-Николай	Васильев	Викторович	101	способен передавать и читать чужие мысли на расстоянии	телепат	T	2
-Роман	Петров	Валерьевич	103	способность вызывать огонь или значительное повышение температуры на расстоянии силой мысли	пирокинет	P	3
-Игорь	Иванов	Сергеевич	102	способность образного конструирования с помощью биологических форм	биоморф	B	1
+Ольга	Измайлова	Петровна	106	способность образного конструирования с помощью биологических форм	биоморф	B	6
+Роман	Петров	Валерьевич	103	способен передавать и читать чужие мысли на расстоянии	телепат	T	3
+Ирина	Нечаева	Михайловна	104	способность вызывать огонь или значительное повышение температуры на расстоянии силой мысли	пирокинет	P	4
+Игорь	Иванов	Сергеевич	102	способен передавать и читать чужие мысли на расстоянии	телепат	T	1
+Николай	Васильев	Викторович	101	способность образного конструирования с помощью биологических форм	биоморф	B	2
+Степан	Козлов	Игнатьевич	105	способность вызывать огонь или значительное повышение температуры на расстоянии силой мысли	пирокинет	P	5
 \.
 
 
@@ -100,15 +82,15 @@ COPY public.spravka (name, family, middle_name, n_reg_doc, power, category, type
 -- Name: spravka_id_seq; Type: SEQUENCE SET; Schema: public; Owner: andreipunt90
 --
 
-SELECT pg_catalog.setval('public.spravka_id_seq', 7, true);
+SELECT pg_catalog.setval('public.spravka_id_seq', 218, true);
 
 
 --
--- Name: spravka spravka_category_key; Type: CONSTRAINT; Schema: public; Owner: andreipunt90
+-- Name: spravka spravka_id_key; Type: CONSTRAINT; Schema: public; Owner: andreipunt90
 --
 
 ALTER TABLE ONLY public.spravka
-    ADD CONSTRAINT spravka_category_key UNIQUE (category);
+    ADD CONSTRAINT spravka_id_key UNIQUE (id);
 
 
 --
@@ -116,7 +98,7 @@ ALTER TABLE ONLY public.spravka
 --
 
 ALTER TABLE ONLY public.spravka
-    ADD CONSTRAINT spravka_pkey PRIMARY KEY (category);
+    ADD CONSTRAINT spravka_pkey PRIMARY KEY (id);
 
 
 --
