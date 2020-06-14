@@ -7,7 +7,7 @@ function post_form() {
 	$("#form_category").prop('disabled', false);
 	$("#form_power").prop('disabled', false);
 	if(($("#form_caption").html()) == 'Добавление') {
-		var url = 'create.php';
+		var url = 'create_client.php';
 	}
 	if(($("#form_caption").html()) == 'Редактирование') {
 		var url = 'edit.php';
