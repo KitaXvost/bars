@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	refresh();
-	return;
 });
+
 //отправка данных из формы
 function post_form() {
 	$("#form_category").prop('disabled', false);
@@ -25,6 +25,7 @@ function post_form() {
 	$("#result_form").text('Данные отправлены').delay(2500).fadeOut(300);
 	close2();
 }
+
 //выбор типа категории внутри формы
 function select_type(type_category) {
 	if(type_category == 'P') {
@@ -40,11 +41,12 @@ function select_type(type_category) {
 		$("#form_power").html('способность образного конструирования с помощью биологических форм');
 	}
 }
+
 //удаление записи таблицы
 function trash_form() {
 	var id = document.getElementById('row-id').innerHTML;
 	$.ajax({
-		url: "delete.php",
+		url: "delete_client.php",
 		type: "POST",
 		data: {
 			id: id
@@ -54,13 +56,14 @@ function trash_form() {
 	$("#result_form").text('Запись удалена').delay(2500).fadeOut(300);
 	close4();
 }
+
 //подготовка формы до её открытия
 //при выборе строк таблицы
 function radio(id) {
 	$("#edit-button").fadeIn(100);
 	$("#trash-button").fadeIn(100);
 	$.ajax({
-		url: "select.php",
+		url: "read_one.php",
 		type: "POST",
 		data: {
 			id: id
@@ -78,6 +81,7 @@ function radio(id) {
 		}
 	});
 }
+
 //обновление таблицы
 //возврат кнопок управления
 //к начальному виду
@@ -91,22 +95,28 @@ function refresh(data_table) {
 	$("#edit-button").fadeOut(100);
 	$("#trash-button").fadeOut(100);
 	$("#create-button").fadeIn(100);
+	return;
 }
+
 //подставляем заголовок формы
 //меняем надпись на кнопке
 //открываем форму редактирования
 //скрываем кнопки управления таблицей
 function edit(caption) {
+   $("#form_category").prop('disabled', true);
+	$("#form_power").prop('disabled', true);
 	$("#form_caption").text(caption);
 	$("#post").val('Исправить');
 	$("#form_task").fadeIn(500);
 	hide_btns();
 }
+
 //закрытие формы с анимацией
 function close2() {
-	$("#form_task").fadeOut(500);
 	refresh();
+	$("#form_task").fadeOut(500);
 }
+
 //очищение формы
 //подставляем заголовок формы
 //меняем надпись на кнопке
@@ -122,16 +132,19 @@ function create(caption) {
 	$("#form_task").fadeIn(500);
 	hide_btns();
 }
+
 //открытие формы удаления
 function trash() {
 	$("#delete_task").fadeIn(500);
 	hide_btns();
 }
+
 //закрытие формы удаление с анимацией
 function close4() {
-	$("#delete_task").fadeOut(500);
 	refresh();
+	$("#delete_task").fadeOut(500);
 }
+
 //скрытие кнопок управления таблицей
 function hide_btns() {
 	$("#create-button").fadeOut(100);
