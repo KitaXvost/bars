@@ -107,6 +107,48 @@ class Client
 
     }
 
+
+
+
+    function readAll(){
+
+    $query = "SELECT
+                *
+            FROM
+                " . $this->table_name . "
+            ORDER BY
+                id ASC";
+
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+
+
+    echo "<table>";
+    foreach ($stmt as $row) {
+      $name = $row['name'];
+      $family = $row['family'];
+      $middle_name = $row['middle_name'];
+      $n_reg_doc = $row['n_reg_doc'];
+      $power = $row['power'];
+      $category = $row['category'];
+      $type_category = $row['type_category'];
+      $id = $row['id'];
+
+      echo "<tr>
+            <td>". $family ." ". $name ." ". $middle_name ."</td>
+            <td>". $type_category . "</td>
+            <td><input name='id' class='wrap' type='radio' onclick='radio(id=".$id.");'></td>
+            </tr>";
+
+            }
+
+    echo'
+    </table>
+    ';
+     }
+
+
+
     function readOne()
     {
 

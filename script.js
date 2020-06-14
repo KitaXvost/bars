@@ -87,7 +87,7 @@ function radio(id) {
 //к начальному виду
 function refresh(data_table) {
 	$.ajax({
-		url: "refresh.php",
+		url: "read_all.php",
 		success: function(data) {
 			$('#data_table').html(data);
 		}
