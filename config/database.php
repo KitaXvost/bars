@@ -1,5 +1,6 @@
 <?php
-class Database{
+class Database
+{
 
     private $host = "localhost";
     private $port = 5432;
@@ -8,17 +9,20 @@ class Database{
     private $password = "Ii2329925";
     public $conn;
 
-    public function getConnection(){
+    public function getConnection()
+    {
 
         $this->conn = null;
 
-        try{
-            $this->conn = new PDO("pgsql:host=".$this->host.";port=".$this->port.";dbname=".$this->db_name."", $this->username, $this->password);
-        }catch(PDOException $exception){
+        try
+        {
+            $this->conn = new PDO("pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name . "", $this->username, $this->password);
+        }
+        catch(PDOException $exception)
+        {
             echo "Connection error: " . $exception->getMessage();
         }
 
         return $this->conn;
     }
 }
-?>

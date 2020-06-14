@@ -42,4 +42,5 @@
 </div>
 <footer> Исходный код <a href="https://github.com/KitaXvost/bars">GitHub</a> </footer>
 <iframe src="about_errors.html"></iframe>
+
 </html>

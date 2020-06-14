@@ -1,6 +1,6 @@
 <?php
-
-if($_POST){
+if ($_POST)
+{
 
     include_once 'config/database.php';
     include_once 'objects/client.php';
@@ -13,10 +13,12 @@ if($_POST){
     $client->id = $_POST['id'];
 
     // удаление клиента из БД
-    if($client->delete()){
+    if ($client->delete())
+    {
         echo "Клиент удален";
     }
-    else{
+    else
+    {
         echo "Невозможно удалить клиента";
     }
 }

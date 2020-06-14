@@ -34,7 +34,9 @@ class Client
         $this->category = htmlspecialchars(strip_tags($this->category));
         $this->power = htmlspecialchars(strip_tags($this->power));
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this
+            ->conn
+            ->prepare($query);
 
         // bind values
         $stmt->bindParam(":name", $this->name);
@@ -72,7 +74,9 @@ class Client
                    WHERE
                      id = :id";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this
+            ->conn
+            ->prepare($query);
 
         //защита от инъекций
         $this->name = htmlspecialchars(strip_tags($this->name));
@@ -107,47 +111,45 @@ class Client
 
     }
 
+    function readAll()
+    {
 
-
-
-    function readAll(){
-
-    $query = "SELECT
+        $query = "SELECT
                 *
             FROM
                 " . $this->table_name . "
             ORDER BY
                 id ASC";
 
-    $stmt = $this->conn->prepare( $query );
-    $stmt->execute();
+        $stmt = $this
+            ->conn
+            ->prepare($query);
+        $stmt->execute();
 
+        echo "<table>";
+        foreach ($stmt as $row)
+        {
+            $name = $row['name'];
+            $family = $row['family'];
+            $middle_name = $row['middle_name'];
+            $n_reg_doc = $row['n_reg_doc'];
+            $power = $row['power'];
+            $category = $row['category'];
+            $type_category = $row['type_category'];
+            $id = $row['id'];
 
-    echo "<table>";
-    foreach ($stmt as $row) {
-      $name = $row['name'];
-      $family = $row['family'];
-      $middle_name = $row['middle_name'];
-      $n_reg_doc = $row['n_reg_doc'];
-      $power = $row['power'];
-      $category = $row['category'];
-      $type_category = $row['type_category'];
-      $id = $row['id'];
-
-      echo "<tr>
-            <td>". $family ." ". $name ." ". $middle_name ."</td>
-            <td>". $type_category . "</td>
-            <td><input name='id' class='wrap' type='radio' onclick='radio(id=".$id.");'></td>
+            echo "<tr>
+            <td>" . $family . " " . $name . " " . $middle_name . "</td>
+            <td>" . $type_category . "</td>
+            <td><input name='id' class='wrap' type='radio' onclick='radio(id=" . $id . ");'></td>
             </tr>";
 
-            }
+        }
 
-    echo'
+        echo '
     </table>
     ';
-     }
-
-
+    }
 
     function readOne()
     {
@@ -159,7 +161,9 @@ class Client
                 WHERE
                     id = ?";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this
+            ->conn
+            ->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();
 
@@ -180,7 +184,9 @@ class Client
 
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this
+            ->conn
+            ->prepare($query);
         $stmt->bindParam(1, $this->id);
 
         if ($result = $stmt->execute())
